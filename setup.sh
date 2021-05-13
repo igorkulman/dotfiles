@@ -8,6 +8,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "Installing Homebrew tools"
 brew install aria2 bat git git-lfs midnight-commander swiftlint wget curl hugo rbenv
 brew install --cask the-unarchiver db-browser-for-sqlite fork iina keepassxc provisionql quicklook-json standard-notes visual-studio-code iterm2 flux signal firefox imageoptim stats maccy hiddenbar
+brew tap homebrew/cask-fonts
+brew install font-droid-sans-mono-for-powerline
 
 echo "Setting up zsh"
 mkdir -p "$HOME/.zsh"
