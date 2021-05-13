@@ -1,0 +1,23 @@
+[user]
+	name = Igor Kulman
+	email = igor@kulman.sk
+    signingkey = 9D77BAA2C356DFA2
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[pull]
+	rebase = false
+[alias]
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	whoami = "! git var -l | grep '^GIT_.*_IDENT'"
+[pager]
+	branch = false
+	tag = false
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true
