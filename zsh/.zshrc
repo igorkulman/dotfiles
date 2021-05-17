@@ -1,5 +1,5 @@
 # zsnap
-source ~/git/zsh-snap/znap.zsh
+source ~/.zsh/zsh-snap/znap.zsh
 
 # pure prompt
 znap prompt sindresorhus/pure
