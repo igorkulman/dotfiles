@@ -32,7 +32,7 @@ alias cat="bat -p"
 alias hs="hugo server --buildFuture --disableFastRender"
 alias mc="/usr/local/bin/mc --nosubshell"
 
-export PATH=/Users/igorkulman/go/bin:$PATH
+export PATH=~/go/bin:$PATH
 go env -w GO111MODULE=auto
 
 znap eval rbenv-init 'rbenv init -'
