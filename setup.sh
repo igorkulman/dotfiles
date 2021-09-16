@@ -12,6 +12,7 @@ brew tap homebrew/cask-fonts
 brew install font-droid-sans-mono-for-powerline
 
 echo "Setting up zsh"
+rm -rf "$HOME/.zsh"
 mkdir -p "$HOME/.zsh"
 git clone git@github.com:marlonrichert/zsh-snap.git "$HOME/.zsh/zsh-snap"
 source "$HOME/.zsh/zsh-snap/install.zsh"
@@ -21,6 +22,8 @@ ln -s "$HOME/.dotfiles/zsh/.zshrc" "$HOME/.zshrc"
 echo "Setting up git"
 ln -s "$HOME/.dotfiles/git/.gitconfig" "$HOME/.gitconfig"
 ln -s "$HOME/.dotfiles/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+
+ln -s "$HOME/.dotfiles/aria2/aria2.conf" "$HOME/.aria2/aria2.conf"
 
 echo "Silencing last login info"
 touch "$HOME/.hushlogin"
