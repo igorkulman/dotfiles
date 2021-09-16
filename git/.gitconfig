@@ -21,3 +21,5 @@
 	smudge = git-lfs smudge -- %f
 [commit]
 	gpgsign = true
+[mergetool]
+	keepBackup = false
