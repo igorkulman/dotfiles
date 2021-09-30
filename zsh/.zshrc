@@ -1,4 +1,7 @@
 # zsnap
+[[ -f ~/.zsh/zsh-snap/znap.zsh ]] ||
+    git clone https://github.com/marlonrichert/zsh-snap.git ~/.zsh/zsh-snap
+
 source ~/.zsh/zsh-snap/znap.zsh
 
 # pure prompt

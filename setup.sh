@@ -14,8 +14,6 @@ brew install font-droid-sans-mono-for-powerline
 echo "Setting up zsh"
 rm -rf "$HOME/.zsh"
 mkdir -p "$HOME/.zsh"
-git clone git@github.com:marlonrichert/zsh-snap.git "$HOME/.zsh/zsh-snap"
-source "$HOME/.zsh/zsh-snap/install.zsh"
 rm "$HOME/.zshrc"
 ln -s "$HOME/.dotfiles/zsh/.zshrc" "$HOME/.zshrc"
 
