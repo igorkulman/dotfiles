@@ -40,3 +40,4 @@ export PATH=~/go/bin:$PATH
 go env -w GO111MODULE=auto
 
 znap eval rbenv-init 'rbenv init -'
+znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
