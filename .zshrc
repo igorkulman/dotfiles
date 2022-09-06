@@ -33,9 +33,14 @@ bindkey  "^[[3~"  delete-char
 alias bup="brew update && brew upgrade && brew cleanup"
 alias cat="bat -p"
 alias hs="hugo server --buildFuture --disableFastRender"
-alias mc="/usr/local/bin/mc --nosubshell"
 alias ls='ls -G'
 
+if [ -d "/opt/homebrew" ]; then
+    alias mc="/opt/homebrew/bin/mc --nosubshell"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    alias mc="/usr/local/bin/mc --nosubshell"
+fi
 # Secrets
 if [ -f ~/.secrets ]; then
     source  ~/.secrets
