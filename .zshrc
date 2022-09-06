@@ -36,8 +36,6 @@ alias hs="hugo server --buildFuture --disableFastRender"
 alias mc="/usr/local/bin/mc --nosubshell"
 alias ls='ls -G'
 
-export PATH=~/go/bin:$PATH
-go env -w GO111MODULE=auto
 # Secrets
 if [ -f ~/.secrets ]; then
     source  ~/.secrets
