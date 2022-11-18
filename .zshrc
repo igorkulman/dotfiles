@@ -28,6 +28,8 @@ zstyle ':prompt:pure:path' color cyan
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+bindkey  "^[[1;9D" beginning-of-line
+bindkey  "^[[1;9C" end-of-line
 
 # Aliases
 alias bup="brew update && brew upgrade && brew cleanup"
