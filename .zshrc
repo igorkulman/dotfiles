@@ -55,3 +55,7 @@ fi
 
 znap eval rbenv-init 'rbenv init -'
 znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+
+source  ~/.fastlane/completions/completion.sh
+
+- [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
