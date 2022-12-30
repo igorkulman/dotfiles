@@ -3,6 +3,7 @@ tap "homebrew/cask-fonts"
 
 brew "aria2"
 brew "bat"
+brew "exa"
 brew "git"
 brew "git-lfs"
 brew "midnight-commander"
