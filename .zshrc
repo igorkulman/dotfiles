@@ -64,6 +64,6 @@ source  ~/.fastlane/completions/completion.sh
 
 # fzf
 [[ -f ~/.fzf.zsh ]] ||
-    $(brew --prefix)/opt/fzf/install
+    yes | $(brew --prefix)/opt/fzf/install
 
 source ~/.fzf.zsh
