@@ -38,12 +38,10 @@ alias hs="hugo server --buildFuture --disableFastRender"
 alias ls="exa"
 alias ll="exa -alh"
 alias tree="exa --tree"
+alias mc="mc --nosubshell"
 
-if [ -d "/opt/homebrew" ]; then
-    alias mc="/opt/homebrew/bin/mc --nosubshell"
+if [ -d "/opt/homebrew" ]; then    
     eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    alias mc="/usr/local/bin/mc --nosubshell"
 fi
 
 # Secrets
