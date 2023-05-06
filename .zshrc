@@ -46,8 +46,6 @@ else
     alias mc="/usr/local/bin/mc --nosubshell"
 fi
 
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
 # Secrets
 if [ -f ~/.secrets ]; then
     source  ~/.secrets
