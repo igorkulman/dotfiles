@@ -35,9 +35,9 @@ bindkey  "^[[1;9C" end-of-line
 alias bup="brew update && brew upgrade && brew cleanup"
 alias cat="bat -p"
 alias hs="hugo server --buildFuture --disableFastRender"
-alias ls="exa"
-alias ll="exa -alh"
-alias tree="exa --tree"
+alias ls="eza"
+alias ll="eza -alh"
+alias tree="eza --tree"
 alias mc="mc --nosubshell"
 
 if [ -d "/opt/homebrew" ]; then    
