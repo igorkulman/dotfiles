@@ -1,65 +1,84 @@
-# zsnap
-[[ -f ~/.zsh/zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git ~/.zsh/zsh-snap
+# homebrew on apple silicon
+export PATH=/opt/homebrew/bin:$PATH
 
-source ~/.zsh/zsh-snap/znap.zsh
+autoload -Uz vcs_info
 
-# pure prompt
-znap prompt sindresorhus/pure
+# Git branch formatting (no parentheses)
+zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:*' enable git
 
-# Zsh plugins
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-autosuggestions
+# Flag to track if we've already printed the first prompt
+__prompt_initialized=false
 
-# Zsh settings
-zle_bracketed_paste=()
-zle_highlight+=(paste:none)
+# Prompt command
+precmd() {
+  vcs_info
+  local git_info=""
+  [[ -n "$vcs_info_msg_0_" ]] && git_info=" %F{242}${vcs_info_msg_0_}%f"
 
-unsetopt prompt_cr prompt_sp
+  if $__prompt_initialized; then
+    print ""
+  else
+    __prompt_initialized=true
+  fi
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+  PROMPT="%F{blue}%~%f${git_info}
+%F{green}❯%f "
+}
 
-# Zsh colors
-zstyle ':prompt:pure:prompt:success' color green
-zstyle ':prompt:pure:prompt:error' color red
-zstyle ':prompt:pure:path' color cyan
+# history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
 
-# Fixing home / end keys
+setopt inc_append_history
+
+autoload -U compinit && compinit
+
+# color
+alias ls='ls --color=auto -hv'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias bup="brew update && brew upgrade && brew cleanup"
+alias cat="bat -p"
+alias hs="hugo server --buildFuture --disableFastRender"
+alias mc="mc --nosubshell"
+
+# fixing home / end keys
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 bindkey  "^[[1;9D" beginning-of-line
 bindkey  "^[[1;9C" end-of-line
 
-# Aliases
-alias bup="brew update && brew upgrade && brew cleanup"
-alias cat="bat -p"
-alias hs="hugo server --buildFuture --disableFastRender"
-alias ls="eza"
-alias ll="eza -alh"
-alias tree="eza --tree"
-alias mc="mc --nosubshell"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-if [ -d "/opt/homebrew" ]; then    
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Tab completion colors
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Secrets
 if [ -f ~/.secrets ]; then
     source  ~/.secrets
 fi
 
-znap eval rbenv-init 'rbenv init -'
-znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
-
-# fastlane
-[[ -f ~/.fastlane/completions/completion.sh ]] ||
-    fastlane enable_auto_complete
-
-source  ~/.fastlane/completions/completion.sh
-
 # fzf
-[[ -f ~/.fzf.zsh ]] ||
-    yes | $(brew --prefix)/opt/fzf/install
+[[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
 
-source ~/.fzf.zsh
+# rbenv
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init - zsh)"
+fi
+
+# syntaxt higlighting
+if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# auto suggestions
+if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
