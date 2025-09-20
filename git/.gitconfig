@@ -1,0 +1,30 @@
+[user]
+        name = Igor Kulman
+        email = igor@kulman.sk
+    signingkey = 9D77BAA2C356DFA2
+[merge]
+    tool = vscode
+    conflictstyle = diff3
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[pager]
+        branch = false
+        tag = false
+        difftool = true
+        diff = false
+[commit]
+        gpgsign = true
+[mergetool]
+        keepBackup = false
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+[diff "swift"]
+    xfuncname = ^[ 	]*(((private |public |internal |final |open )*class|(private |public |internal )*struct|(private |public |internal )*actor|(private |public |internal )*func|(private |public |internal )*extension|(private |public |internal )*enum)[ 	].*)$
+[core]
+        attributesfile = /Users/igorkulman/.gitattributes
+        excludesfile = /Users/igorkulman/.gitignore
+[diff]
+    colorMoved = default

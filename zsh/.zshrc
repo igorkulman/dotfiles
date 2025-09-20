@@ -40,7 +40,6 @@ alias ls='ls --color=auto -hv'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias bup="brew update && brew upgrade && brew cleanup"
-alias cat="bat -p"
 alias hs="hugo server --buildFuture --disableFastRender"
 alias mc="mc --nosubshell"
 
@@ -66,10 +65,6 @@ fi
 # fzf
 [[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
 
-# rbenv
-if command -v rbenv &>/dev/null; then
-  eval "$(rbenv init - zsh)"
-fi
 
 # syntaxt higlighting
 if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
@@ -81,4 +76,8 @@ if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PROMPT_EOL_MARK=''
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export PATH="/Users/igorkulman/.local/bin:$PATH"
