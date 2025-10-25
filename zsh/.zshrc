@@ -35,13 +35,15 @@ setopt inc_append_history
 
 autoload -U compinit && compinit
 
-# color
-alias ls='ls --color=auto -hv'
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
-alias bup="brew update && brew upgrade && brew cleanup"
-alias hs="hugo server --buildFuture --disableFastRender"
-alias mc="mc --nosubshell"
+if [[ $- == *i* ]]; then
+    alias ls='ls --color=auto -hv'
+    alias grep='grep --color=auto'
+    alias diff='diff --color=auto'
+    alias bup="brew update && brew upgrade && brew cleanup"
+    alias hs="hugo server --buildFuture --disableFastRender"
+    alias mc="mc --nosubshell"
+    alias cat="bat --paging=never -p"
+fi
 
 # fixing home / end keys
 bindkey  "^[[H"   beginning-of-line
@@ -66,7 +68,7 @@ fi
 [[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
 
 
-# syntaxt higlighting
+# syntax higlighting
 if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
