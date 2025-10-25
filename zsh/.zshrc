@@ -43,6 +43,8 @@ if [[ $- == *i* ]]; then
     alias hs="hugo server --buildFuture --disableFastRender"
     alias mc="mc --nosubshell"
     alias cat="bat --paging=never -p"
+    alias copy="pbcopy"
+    alias paste="pbpaste"
 fi
 
 # fixing home / end keys
